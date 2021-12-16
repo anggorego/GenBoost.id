@@ -1,5 +1,8 @@
 function symbolRp(data){
-  return `Rp.${data}`
+  return data.toLocaleString('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+  });
 }
 // console.log(rp(1000000));
 // rp(data)

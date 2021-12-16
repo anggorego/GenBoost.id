@@ -1,36 +1,88 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <h1>Please make an order</h1>
-  <form action="/orders/add" method="POST">
-    <label >Expected Rank :</label>
-    <input type="text" name="rankGoal">
-    <br>
-    <label >Special Request :</label>
-    <input type="text" name="request">
-    <br>
-    <label >GameId :</label>
-    <input type="text" name="inGameId">
-    <br>
-    <select name="TrainerId" value="">
-      <option selected disabled>--SELECT ONE--</option>
-      <%for(let i=0;i < data.length;i++){ %>
-        <%if(!data[i].Order){%>
-          <option value="<%=data[i].id%>"><%=data[i].name %></option>
-        <%}else{%>
-          <option disabled value="<%=data[i].id%>"><%=data[i].name %></option>
-        <%}%>
-      <%}%>
-    </select>
-    <br>
-    <input type="submit" value="submit" onclick="">
-</form>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-</body>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>GenBoost! Gendong akunmu tiada batas!</title>
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/home" style="font-size: 40px;">GenBoost!</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/trainers">Trainers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/userProfiles/edit/<%=id%>">Edit Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contactUs">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logouts">Log out</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+  <center><h1 style="margin-top: 30px; margin-bottom: 40px;">Please make an Order!</h1></center>
+
+      <form class="container" method="POST" action="/orders/add" >
+        <div class="form-group mb-3">
+          <label for="formGroupExampleInput">Game Id / In-game Username</label>
+          <input type="text" class="form-control mt-2" id="inGameId" name="inGameId">
+        </div>       
+        <div class="form-group mb-3">
+          <label for="formGroupExampleInput2">Expected Rank</label>
+          <select class="form-select mt-2" aria-label="Default select example"  id="rankGoal" name="rankGoal">
+          <option selected disabled>Select Rank</option>
+          <option value="Epig">Epig</option>
+          <option value="Legendaris">Legendaris</option>
+          <option value="Mithic">Mithic</option>
+          <option value="Mithic I">Mithic I</option>
+          <option value="Mithic II">Mithic II</option>
+        </select>
+        </div>
+        <div class="form-group mb-3">
+          <label for="formGroupExampleInput2">Special Request</label>
+          <textarea class="form-control mt-2" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" name="request"></textarea>
+        </div>
+
+        <form class="container" method="POST" action="/orders/add" >
+          <div class="form-group mb-3">
+            <label for="formGroupExampleInput">Trainer</label>
+            <select class="form-select mt-2" aria-label="Default select example" name="TrainerId">
+          <option selected disabled>--SELECT ONE--</option>
+          <%for(let i=0;i < data.length;i++){ %>
+            <%if(!data[i].Order){%>
+              <option value="<%=data[i].id%>"><%=data[i].name %></option>
+            <%}else{%>
+              <option disabled value="<%=data[i].id%>"><%=data[i].name %></option>
+            <%}%>
+          <%}%>
+        </select>
+          </div>  
+        
+
+        <input type="submit" class="btn btn-primary mt-4" value="Order">
+      </form>
+
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#273036" fill-opacity="1" d="M0,288L102.9,32L205.7,320L308.6,288L411.4,192L514.3,224L617.1,256L720,128L822.9,256L925.7,32L1028.6,0L1131.4,256L1234.3,96L1337.1,288L1440,96L1440,320L1337.1,320L1234.3,320L1131.4,320L1028.6,320L925.7,320L822.9,320L720,320L617.1,320L514.3,320L411.4,320L308.6,320L205.7,320L102.9,320L0,320Z"></path></svg>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+  </body>
 </html>
