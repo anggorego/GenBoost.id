@@ -20,7 +20,7 @@ class UserController{
         res.render('registrationForm',{id})
        })
        .catch(err=>{
-         res.send(err)
+         res.send(err.errors.map(el=>el.message))
        })
      
    }

@@ -38,7 +38,7 @@ class OrderController{
       res.redirect('/home')
     })
     .catch(err=>{
-      res.send(err)
+      res.send(err.errors.map(el=>el.message))
     })
   }
 }

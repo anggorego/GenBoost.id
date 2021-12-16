@@ -17,12 +17,21 @@ module.exports = (sequelize, DataTypes) => {
   };
   Order.init({
     totalPrice: DataTypes.INTEGER,
-    rankGoal: DataTypes.STRING,
+    rankGoal: {type:DataTypes.STRING,
+      allowNull: false,
+      validate:{
+        notNull:{msg:'rankGoal harus diisi'},
+        notEmpty:{msg:'rankGoal harus diisi'}
+      }},
     request: DataTypes.TEXT,
     isComplete: DataTypes.BOOLEAN,
     inGameId: {type:DataTypes.STRING,
     allowNull:false,
-    defaultValue:false
+    defaultValue:false,
+    validate:{
+      notNull:{msg:'inGameId harus diisi'},
+      notEmpty:{msg:'inGameId harus diisi'}
+    }
     }
   },{
     sequelize,

@@ -23,12 +23,12 @@ class UserProfileController{
         res.redirect('/')
        })
        .catch(err=>{
-         res.send(err)
+        res.send(err.errors.map(el=>el.message))
        })
     }
 
     static getEditForm(req,res) {
-      console.log(req.session);
+      
       let id = req.session.users.usersId
       UserProfile.findOne({where:{}})
               .then(data => {
@@ -50,14 +50,14 @@ class UserProfileController{
         "imageUrl":imageUrl
       },{
         where: {
-          "UserId": 28
+          "UserId": id
         }
       })
       .then(data =>{
         res.redirect('homepage')
       })
       .catch(err =>{
-        res.send(err)
+        res.send(err.errors.map(el=>el.message))
       })
 }
 

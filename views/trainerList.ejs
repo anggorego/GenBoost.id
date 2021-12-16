@@ -35,17 +35,23 @@
       </div>
     </nav>
     <center><h1 style="margin-top: 50px;" >Our Trainers</h1></center>
+    
+      <div class="d-flex justify-content-center mt-5"  >
+        <a class="btn btn-primary mx-4" href="/trainers?sort=termahal">termahal</a>
+        <a class="btn btn-primary mx-4" href="/trainers?sort=termurah">termurah</a>
+      </div>
+      
     <div class="container" style="margin-top: 50px;">
       <% data.forEach( el => {%>
 
         <div class="card" style="margin-bottom: 50px;">
-          <img src="https://media.suara.com/pictures/970x544/2020/09/30/18678-rrq-lemon-instagramikhsan-lemon.jpg" class="card-img-top" alt="<%= el.name %>">
+          <img src="<%= el.imageUrl%>" class="card-img-top" alt="<%= el.name %>">
 
           <div class="d-flex">
 
             <div class="card-body ms-4">
               <h5 class="card-title"><%= el.name %></h5>
-              <p class="card-text mb-1"><strong>Rate :</strong> <%= el.fee %> / Rank</p>
+              <p class="card-text mb-1"><strong>Rate: </strong> <%= symbolRp(el.fee) %> </p>
               <% if(!el.Order) { %>
               <p class="card-text text-success" style="font-size: 30px;">Available</p>
               <% } else { %>
