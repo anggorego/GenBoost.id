@@ -19,9 +19,18 @@ module.exports = (sequelize, DataTypes) => {
     totalPrice: DataTypes.INTEGER,
     rankGoal: DataTypes.STRING,
     request: DataTypes.TEXT,
-    isComplete: DataTypes.BOOLEAN
-  }, {
+    isComplete: DataTypes.BOOLEAN,
+    inGameId: {type:DataTypes.STRING,
+    allowNull:false,
+    defaultValue:false
+    }
+  },{
     sequelize,
+    hooks: {
+      beforeCreate(instance,option){
+        instance.isComplete = false
+      }
+    },
     modelName: 'Order',
   });
   return Order;

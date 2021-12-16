@@ -11,7 +11,7 @@ class UserController{
   }
 
    static userAddPost(req,res){
-     
+    //  console.log(req.body);
      let {username,password} = req.body
      let data = {username:username,password:password} 
      User.create(data)

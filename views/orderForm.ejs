@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Please make an order</h1>
+  <form action="/orders/add" method="POST">
+    <label >Expected Rank :</label>
+    <input type="text" name="rankGoal">
+    <br>
+    <label >Special Request :</label>
+    <input type="text" name="request">
+    <br>
+    <label >GameId :</label>
+    <input type="text" name="inGameId">
+    <br>
+    <select name="TrainerId" value="">
+      <option selected disabled>--SELECT ONE--</option>
+      <%for(let i=0;i < data.length;i++){ %>
+        <%if(!data[i].Order){%>
+          <option value="<%=data[i].id%>"><%=data[i].name %></option>
+        <%}else{%>
+          <option disabled value="<%=data[i].id%>"><%=data[i].name %></option>
+        <%}%>
+      <%}%>
+    </select>
+    <br>
+    <input type="submit" value="submit" onclick="">
+</form>
+
+</body>
+</html>

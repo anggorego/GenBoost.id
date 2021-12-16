@@ -19,8 +19,8 @@ class UserProfileController{
       let data = {name,email,phone,imageUrl,UserId} 
       UserProfile.create(data)
       .then(data=>{
-        // console.log(data);
-        res.redirect("/")
+        
+        res.redirect('/home')
        })
        .catch(err=>{
          res.send(err)

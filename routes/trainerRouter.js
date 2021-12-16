@@ -4,6 +4,7 @@ const TrainerController = require("../controllers/trainerController")
 
 trainerRouter.get('/trainers',TrainerController.trainersLists)
 
+
 // trainerRouter.get('/trainers/add', Controller.addTrainer)
 // trainerRouter.post('/trainers/add', Controller.addTrainer)
 

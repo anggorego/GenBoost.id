@@ -9,6 +9,7 @@ const logOutRouter = require('./logOutRouter')
 const userProfileRouter = require('./userProfilesRouter')
 
 indexRouter.get('/', IndexController.homepage)
+indexRouter.get('/home',IndexController.homepageafterorder)
 
 indexRouter.use('/', userRouter)
 indexRouter.use('/', trainerRouter)

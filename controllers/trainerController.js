@@ -9,12 +9,15 @@ class TrainerController{
       }
     })
     .then(data=>{
-      res.send(data)
+      // res.send(data)
+      res.render('trainerList', {data})
     })
     .catch(err=>{
       res.send(err)
     })
   }
+
+  
 }
 
 module.exports = TrainerController
