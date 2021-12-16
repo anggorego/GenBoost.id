@@ -4,6 +4,26 @@ class UserController{
   static allUsers(req,res){
     res.send('masuk user')
   }
+
+  static userAdd(req,res){
+      res.render('createAccount')
+
+  }
+
+   static userAddPost(req,res){
+     
+     let {username,password} = req.body
+     let data = {username:username,password:password} 
+     User.create(data)
+       .then(data=>{
+         let id = data.dataValues.id
+        res.render('registrationForm',{id})
+       })
+       .catch(err=>{
+         res.send(err)
+       })
+     
+   }
 }
 
 module.exports = UserController

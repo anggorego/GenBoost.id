@@ -3,7 +3,11 @@ const {Trainer,Order,User,UserProfile} = require("../models/index")
 class TrainerController{
 
   static trainersLists(req,res){
-    Trainer.findAll()
+    Trainer.findAll({
+      include: {
+        model : Order
+      }
+    })
     .then(data=>{
       res.send(data)
     })
