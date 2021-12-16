@@ -43,7 +43,9 @@ class UserProfileController{
       const {name,phone,email,imageUrl} = req.body
       let input = {name,phone,email,imageUrl}
       let id = req.session.users.usersId
+      console.log('masuk');
       UserProfile.update({
+        
         "name":name,
         "email":email,
         "phone":phone,
@@ -54,7 +56,7 @@ class UserProfileController{
         }
       })
       .then(data =>{
-        res.redirect('homepage')
+        res.redirect('/home')
       })
       .catch(err =>{
         res.send(err.errors.map(el=>el.message))

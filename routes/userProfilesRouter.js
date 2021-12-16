@@ -6,7 +6,7 @@ const { getEditForm } = require('../controllers/userProfile.Controller')
 
 userProfileRouter.get('/usersProfiles', UserProfileController.allUsersProfile)
 userProfileRouter.get('/userProfiles/edit/:id', UserProfileController.getEditForm)
-userProfileRouter.post('/userProfiles/edit/:id', UserProfileController.postEditForm)
+userProfileRouter.post('/usersProfiles/edit/:id', UserProfileController.postEditForm)
 userProfileRouter.get('/usersProfiles/add/:id', UserProfileController.addUser)
 userProfileRouter.post('/usersProfiles/add/:id', UserProfileController.addUserPost)
 userProfileRouter.get('/usersProfiles/add/:id/order', OrderController.orderGenboost)
