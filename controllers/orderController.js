@@ -1,4 +1,5 @@
-const {Trainer,Order,User,UserProfile} = require("../models/index")
+const {Trainer,Order,User,UserProfile} = require("../models/index");
+const trainerRouter = require("../routes/trainerRouter");
 class OrderController{
   static allOrders(req,res){
 
@@ -6,6 +7,10 @@ class OrderController{
   }
 
   static orderGenboost(req,res){
+
+    // console.log(req.session);
+    // let id = req.session.users.usersId
+    // console.log(id);
     Trainer.findAll({include:{model:Order}})
     .then(data=>{
       res.render('orderForm',{data});
@@ -17,10 +22,18 @@ class OrderController{
   }
 
   static addOrderPost(req,res){
-  console.log(req.body);
+  // console.log(req.body);
+
+  let userId = req.session.users.usersId
   let {rankGoal,request,TrainerId,inGameId} = req.body
-  let data = {rankGoal:rankGoal,request:request,TrainerId:TrainerId,inGameId:inGameId}
-    Order.create(data)
+  let input = {rankGoal:rankGoal,request:request,TrainerId:TrainerId,inGameId:inGameId,UserId:userId}
+  let totalPrice = 0
+  Trainer.findOne({where:{id:TrainerId}})
+    .then(data=>{
+    totalPrice = data.fee
+    input.totalPrice = totalPrice
+    return Order.create(input)
+    })
     .then(data=>{
       res.redirect('/home')
     })

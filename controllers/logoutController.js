@@ -1,8 +1,16 @@
 class LogOutController{
 
   static logOut(req,res){
-    res.send('masuk logout')
+    req.session.destroy(err=>{
+      if(err){
+        res.send(err)
+      }else{
+        res.redirect('/')
+      }
+    })
+    // res.send('masuk logout')
   }
+  
 }
 
 module.exports = LogOutController
