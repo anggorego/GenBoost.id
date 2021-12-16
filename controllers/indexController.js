@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs")
 
 class IndexController{
 
-    static homepage(req,res){
+   static homepage(req,res){
       res.render('home')
    }
    static homepageafterorder(req,res){
