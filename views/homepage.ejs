@@ -12,20 +12,23 @@
     
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/">GenBoost!</a>
+        <a class="navbar-brand" href="/home" style="font-size: 40px;">GenBoost!</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">Home</a>
+              <a class="nav-link active" aria-current="page" href="/home">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/trainers">Trainers</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/userProfiles/edit/<%=id%>">Edit Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contactUs">Contact Us</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/logouts">Log out</a>
@@ -35,7 +38,39 @@
       </div>
     </nav>
 
-    <center><a href='/orders/add/<%=id%>' type="button" class="btn btn-danger" style="font-size: 60px; margin-top: 70px;" >Boost Now!</a></center>
+
+    <center><a href='/orders/add/<%=id%>' type="button" class="btn btn-success" style="font-size: 60px; margin-top: 70px;" >Boost Now!</a></center>
+
+    <div class="d-flex flex-column container justify-content-center" style="margin-top: 30px;">
+      <% if(data.length > 0){ %>
+        <center><h1 style="margin-bottom: 30px;">Your Orders:</h1></center>
+      <% } %>
+      <%data.forEach((el,i) => { %>
+        <div class="card text-center mb-4">
+          <div class="card-header">
+            #<%=i+1%>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Trainer: <%= el.Trainer.name %></h5>
+            <p class="card-text">Trainee Username:<%= el.inGameId %></p>
+            <div class="d-flex justify-content-center">
+              <p class="card-text mx-3">Target Rank: <%= el.rankGoal %></p>
+              <div>||</div>
+              <p class="card-text mx-3">Total Price: <%= priceCurrency(el.totalPrice) %></p>
+            </div>
+            
+            <p class="card-text">Status: <%= el.status %></p>
+            <a href="/orders/delete/<%=el.id%>" class="btn btn-danger">Cancel Order</a>
+          </div>
+          <div class="card-footer text-muted">
+            Order Date : <%= el.changeDateFormat %>
+          </div>
+        </div>
+      <% }) %>
+      
+    </div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#273036" fill-opacity="1" d="M0,256L102.9,32L205.7,96L308.6,128L411.4,0L514.3,96L617.1,64L720,160L822.9,96L925.7,32L1028.6,256L1131.4,160L1234.3,288L1337.1,256L1440,224L1440,320L1337.1,320L1234.3,320L1131.4,320L1028.6,320L925.7,320L822.9,320L720,320L617.1,320L514.3,320L411.4,320L308.6,320L205.7,320L102.9,320L0,320Z"></path></svg>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 

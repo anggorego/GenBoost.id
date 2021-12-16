@@ -11,9 +11,10 @@ class OrderController{
     // console.log(req.session);
     // let id = req.session.users.usersId
     // console.log(id);
+    let id = req.session.users.usersId
     Trainer.findAll({include:{model:Order}})
     .then(data=>{
-      res.render('orderForm',{data});
+      res.render('orderForm',{data,id});
       // res.send(data)
     })
     .catch(err=>{
@@ -38,8 +39,23 @@ class OrderController{
       res.redirect('/home')
     })
     .catch(err=>{
-      res.send(err.errors.map(el=>el.message))
+      res.send(err)
     })
+  }
+
+  static deleteOrder(req,res) {
+    let id = req.params.id
+    Order.destroy({
+      where :{
+        id: id
+      }
+    })
+        .then(data =>{
+          res.redirect('/home')
+        })
+        .catch(err =>{
+          res.send(err)
+        })
   }
 }
 

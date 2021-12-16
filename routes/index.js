@@ -13,11 +13,12 @@ indexRouter.get('/', IndexController.homepage)
 indexRouter.use('/', userRouter)
 indexRouter.use('/', userProfileRouter)
 indexRouter.post('/', IndexController.postLogin)
+indexRouter.get('/contactUs',IndexController.showContact)
 indexRouter.use((req,res,next) => {
   if(req.session.users) {
     next()
   } else {
-    let errors = "please log in first"
+    let errors = "Please log in first"
     res.redirect(`/?errors=${errors}`)
   }
 })
