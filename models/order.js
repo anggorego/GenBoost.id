@@ -19,7 +19,8 @@ module.exports = (sequelize, DataTypes) => {
     totalPrice: DataTypes.INTEGER,
     rankGoal: DataTypes.STRING,
     request: DataTypes.TEXT,
-    isComplete: DataTypes.BOOLEAN
+    isComplete: DataTypes.BOOLEAN,
+    inGameId: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'Order',
