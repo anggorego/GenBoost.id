@@ -4,6 +4,7 @@ const symbolRp = require("../helpers/priceCurrency")
 class TrainerController{
 
   static trainersLists(req,res){
+    let id = req.session.users.usersId
     let parameter = {
       include: {
         model : Order
@@ -20,7 +21,7 @@ class TrainerController{
 
     .then(data=>{
       // res.send(data)
-      res.render('trainerList', {data,symbolRp})
+      res.render('trainerList', {data,symbolRp,id})
     })
     .catch(err=>{
       res.send(err)

@@ -1,3 +1,4 @@
+const sendMail = require("../helpers/sendMail")
 const {Trainer,Order,User,UserProfile} = require("../models/index")
 const sendMail = require('../helpers/send-mail')
 class UserProfileController{
@@ -8,7 +9,7 @@ class UserProfileController{
 
     static addUser(req,res){
       // console.log('masuk');
-      res.render('registrationForm')
+      res.render('registrationForm',)
     }
 
     static addUserPost(req,res){
@@ -23,14 +24,19 @@ class UserProfileController{
         res.redirect('/')
        })
        .catch(err=>{
+        //  eror = err.errors.map(el=>el.message)
+        //  console.log(eror);
         res.send(err.errors.map(el=>el.message))
+        // res.render("registrationForm",{eror})
        })
     }
 
     static getEditForm(req,res) {
       
       let id = req.session.users.usersId
-      UserProfile.findOne({where:{}})
+      UserProfile.findOne({where:{
+        "UserId" : id
+      }})
               .then(data => {
                 res.render('editForm', {data,id})
               })

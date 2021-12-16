@@ -14,6 +14,19 @@ module.exports = (sequelize, DataTypes) => {
       Order.belongsTo(models.User,{foreignKey:"UserId"})
       Order.belongsTo(models.Trainer,{foreignKey:"TrainerId"})
     }
+
+    get changeDateFormat() {
+      var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      return this.createdAt.toLocaleDateString("en-EN", options)
+    }
+
+    get status() {
+      if(this.isComplete) {
+        return 'Finished'
+      } else {
+        return 'On Progress'
+      }
+    }
   };
   Order.init({
     totalPrice: DataTypes.INTEGER,
@@ -21,16 +34,18 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate:{
         notNull:{msg:'rankGoal harus diisi'},
-        notEmpty:{msg:'rankGoal harus diisi'}
       }},
-    request: DataTypes.TEXT,
-    isComplete: DataTypes.BOOLEAN,
-    inGameId: {type:DataTypes.STRING,
-    allowNull:false,
-    defaultValue:false,
-    validate:{
-      notNull:{msg:'inGameId harus diisi'},
+    request: {
+      type:DataTypes.STRING,
+      validate:{
       notEmpty:{msg:'inGameId harus diisi'}
+    }
+    },
+    isComplete: DataTypes.BOOLEAN,
+    inGameId: {
+      type:DataTypes.STRING,
+      validate:{
+        notEmpty:{msg:'inGameId harus diisi'}
     }
     }
   },{

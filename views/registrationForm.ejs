@@ -1,32 +1,49 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<div>
-  <a href="/">HOME</a>
-</div>
-<body>
-  <h1>REGISTRATION FORM</h1>
-  <!-- <%= id %> -->
-  <form action="/usersProfiles/add/<%=id%>" method="POST">
-    <label >name :</label>
-    <input type="text" name="name">
-    <br>
-    <label >Email address :</label>
-    <input type="text" name="email">
-    <br>
-    <label >phone number :</label>
-    <input type="text" name="phone">
-    <br>
-    <label >image :</label>
-    <input type="text" name="imageUrl">
-    <br>
-    <input type="submit" value="submit" onclick="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>GenBoost! Gendong Bos!</title>
+  </head>
+  <body>
+
+  <center><h1 class="mt-5">Profile</h1></center>
+  
+    <div class="card text-dark bg-light mb-3 mt-5 container" style="max-width: 30rem;">
+      <div class="card-body pt-4">
+        <form action="/usersProfiles/add/<%=id%>" method="POST">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Phone Number</label>
+            <input type="text" class="form-control" id="phone" name="phone" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-1">
+            <label for="imageUrl" class="form-label">Image Url</label>
+            <input type="text" class="form-control" id="imageUrl" name="imageUrl" >
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class=" form-check">
+            </div>
+          </div>
+          <input type="submit" value="Submit" class="btn btn-primary mx-3" >
+        </form>
+      </div>
+    </div>
   </form>
-</body>
+
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#273036" fill-opacity="1" d="M0,288L102.9,224L205.7,32L308.6,32L411.4,160L514.3,288L617.1,160L720,224L822.9,128L925.7,224L1028.6,128L1131.4,96L1234.3,288L1337.1,64L1440,224L1440,320L1337.1,320L1234.3,320L1131.4,320L1028.6,320L925.7,320L822.9,320L720,320L617.1,320L514.3,320L411.4,320L308.6,320L205.7,320L102.9,320L0,320Z"></path></svg>
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+  </body>
 </html>
