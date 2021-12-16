@@ -1,4 +1,3 @@
-const sendMail = require("../helpers/sendMail")
 const {Trainer,Order,User,UserProfile} = require("../models/index")
 const sendMail = require('../helpers/send-mail')
 class UserProfileController{

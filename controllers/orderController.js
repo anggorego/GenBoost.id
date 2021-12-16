@@ -7,8 +7,7 @@ class OrderController{
   }
 
   static orderGenboost(req,res){
-
-    // console.log(req.session);
+     // console.log(req.session);
     // let id = req.session.users.usersId
     // console.log(id);
     let id = req.session.users.usersId
@@ -24,7 +23,6 @@ class OrderController{
 
   static addOrderPost(req,res){
   // console.log(req.body);
-
   let userId = req.session.users.usersId
   let {rankGoal,request,TrainerId,inGameId} = req.body
   let input = {rankGoal:rankGoal,request:request,TrainerId:TrainerId,inGameId:inGameId,UserId:userId}

@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     phone: {type:DataTypes.STRING,
       validate:{
         isZero(value){
-          if(value[0]===0){
+          if(value[0] === 0){
             throw new Error('tidak perlu menggunakan 0 didepan nomor telepon')
           }
           

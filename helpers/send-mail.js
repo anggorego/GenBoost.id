@@ -13,7 +13,10 @@ function sendMail(email) {
       from: 'pairproject6@gmail.com',
       to: email,
       subject: 'SELAMAT DATANG DI GENBOOST!',
-      text: `TERIMAKASIH SUDAH REGISTRASI UNTUK INFO SELANJUTNYA TRAINER KAMU AKAN MENGUHUBUNGI !`
+      text: `TERIMAKASIH SUDAH REGISTRASI UNTUK INFO SELANJUTNYA TRAINER KAMU AKAN MENGUHUBUNGI !
+      untuk login silahkan masuk ke link berikut
+      http://localhost:3000/
+      `
     };
   
     return transporter.sendMail(mailOptions, (err, info) => {

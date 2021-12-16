@@ -38,7 +38,7 @@ module.exports = (sequelize, DataTypes) => {
     request: {
       type:DataTypes.STRING,
       validate:{
-      notEmpty:{msg:'inGameId harus diisi'}
+      notEmpty:{msg:'request harus diisi'}
     }
     },
     isComplete: DataTypes.BOOLEAN,
