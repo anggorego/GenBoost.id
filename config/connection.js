@@ -4,7 +4,7 @@ const pool = new Pool({
   host: 'localhost',
   database: 'jokeeDB',
   password: 'postgres',
-  port: 5434,
+  port: 5432,
 })
 // pool.query('SELECT NOW()', (err, res) => {
 //   console.log(err, res)
