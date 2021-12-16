@@ -1,5 +1,5 @@
 const {Trainer,Order,User,UserProfile} = require("../models/index")
-
+const sendMail = require('../helpers/send-mail')
 class UserProfileController{
 
     static allUsersProfile(req,res){
@@ -19,7 +19,7 @@ class UserProfileController{
       let data = {name,email,phone,imageUrl,UserId} 
       UserProfile.create(data)
       .then(data=>{
-        
+        sendMail(email)
         res.redirect('/')
        })
        .catch(err=>{
@@ -61,9 +61,7 @@ class UserProfileController{
       .catch(err =>{
         res.send(err.errors.map(el=>el.message))
       })
-}
-
-    
+  }
 }
 
 
