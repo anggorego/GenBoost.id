@@ -5,11 +5,13 @@ const priceCurrency = require('../helpers/priceCurrency')
 class IndexController{
 
    static homepage(req,res){
+
       let error;
       if(req.query.errors){
          error = req.query.errors
       }
       res.render('home',{error})
+
    }
    static homepageafterorder(req,res){
       let id = req.session.users.usersId
