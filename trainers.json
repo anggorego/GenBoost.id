@@ -1,0 +1,21 @@
+[
+  { "name" : "anggoro" ,
+    "fee" : 20000,
+    "quota" : 2 ,
+    "description" : " juara 1 liga warkop",
+    "imageUrl" : " anggo.png" 
+  },
+  { "name" : "julius" ,
+    "fee" :5000,
+    "quota" : 3 ,
+    "description" : " belum pernah juara, tapi jago kok",
+    "imageUrl" : " julius.png" 
+  },
+  { "name" : "azrullah" ,
+    "fee" : 1000000,
+    "quota" : 1 ,
+    "description" : " juara 1 M3 ",
+    "imageUrl" : " azrullah.png" 
+  }
+
+]
